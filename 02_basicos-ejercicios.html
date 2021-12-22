@@ -1,137 +1,372 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios de Programación en JavaScript</title>
+  </head>
+
+  <body>
+    <h1>Ejercicios de Programación en JavaScript</h1>
+    <script>
+      /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
+      //aolucion Jon
+      const contarCaracteres = (cadena = "") =>
+        !cadena
+          ? console.warn("No ingresaste ninguna cadena")
+          : console.info(
+              `La cadena "${cadena}" tiene ${cadena.length} caracteres`
+            );
+
+      //contarCaracteres();
+      //contarCaracteres("Hola Mundo");
+      // mi solucion
+      function caracteres(str = "") {
+        if (!str) {
+          console.log("Ingresa un string");
+        } else {
+          console.log(`El "${str}" tiene  ${str.length} letras`);
+        }
+      }
+      //caracteres("");
+      //caracteres("Hola Mundo");
+
+      /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+      const recortar = (str = "", long = undefined) =>
+        !str
+          ? console.log("Ingresa un string")
+          : console.log(str.slice(0, long));
+
+      //recortar("Hola Mundo",4);
+
+      function recortada(c, l) {
+        !c ? console.log("pasa un string") : console.log(c.slice(0, l));
+      }
+      //recortada("Hola Mundo", 4)
+
+      /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
+           miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
+      const stringArray = (str = "", separador = undefined) =>
+        !str
+          ? console.log("Ingresa el string")
+          : separador === undefined
+          ? console.log("No ingresaste el separador")
+          : console.log(str.split(separador));
+
+      //stringArray("Ene,Feb,Mar", ",")
+
+      /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
+
+      /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
+      function alreves(cadena) {
+        return cadena.split("").reverse().join("");
+      }
+
+      //console.log(alreves("hola mundo"))
+
+      // solucion jon
+      const invertirCadena = (cadena = "") =>
+        !cadena
+          ? console.log("no ingresaste cadena") // <- aqui hacemos la validacion
+          : console.log(cadena.split("").reverse().join(""));
+
+      //invertirCadena("Hola Mundo")
+
+      /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
+      // <-- solucion jon
+      const textoEncadena = (cadena = "", texto = "") => {
+        if (!cadena) return console.warn("No ingresaste el texto largo");
+
+        if (!texto) return console.warn("No ingresaste la palabra a evaluar");
+
+        let i = 0,
+          contador = 0;
+
+        while (i !== -1) {
+          i = cadena.indexOf(texto, i);
+          if (i !== -1) {
+            i++;
+            contador++;
+          }
+        }
+        return console.info(`La palabra ${texto} se repite ${contador} veces`);
+      };
+
+      //textoEncadena("hola mundo adios mundo holi mundo", "mundo")
+
+      /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+
+      function palindro(palabra) {
+        if (!palabra) return console.log("ingresa palabra"); // <- valido que ingresen datos
+
+        palabra = palabra.toLowerCase(); // <- paso a minusculas
+        let alReves = palabra.split("").reverse().join(""); // <- invierto la palabra
+
+        return palabra === alReves
+          ? console.log(
+              `Si es palindromo, Palabra original ${palabra}, Palabra al reves ${alReves}`
+            )
+          : console.log(
+              `No es palindromo, Palabra original ${palabra}, Palabra al reves ${alReves}`
+            );
+      }
+
+      // palindro("Salas");
+
+      // <- solucion jon
+      const palindromo = (palabra = "") => {
+        if (!palabra) return console.warn("No ingresaste una palabra o frase"); // <- validamos que ingrese datos
+
+        palabra = palabra.toLowerCase();
+        let alReves = palabra.split("").reverse().join("");
+
+        return palabra === alReves
+          ? console.info(
+              `Si es palindromo, Palabra original ${palabra}, Palabra al reves ${alReves}`
+            )
+          : console.info(
+              `No es palindromo, Palabra original ${palabra}, Palabra al reves ${alReves}`
+            );
+      };
+
+      //palindromo("salas")
+
+      /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
+
+      function eliminaCaracter(text = "", patron = "") {
+        !text
+          ? console.warn("No ingresaste un texto")
+          : !patron
+          ? console.warn("No ingresaste un patron")
+          : console.info(text.replace(new RegExp(patron, "ig"), ""));
+      }
+
+      // eliminaCaracter("xyz1, xyz2, xyz3, xyz4, xyz5", "yz")
+
+      /*  const eliminarCaracteres = (texto = "", patron ="") => 
+      (!texto)
+      ? console.warn("No ingresaste un texto")
+      : (!patron)
+      ? console.warn("No ingresaste un patron")
+      : console.info(texto.replace(new RegExp(patron,"ig"),""));
+    */
+      //eliminarCaracteres("xyz1, xyz2, xyz3, xyz4, xyz5", "xyz")
+
+      /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
+
+      /*const aleatorio = () => console.log(Math.round((Math.random() * 100)+500))
+      aleatorio();*/
+
+      // my solution
+      function alea() {
+        return console.log(Math.round(Math.random() * 100 + 500));
+      }
+
+      //alea()
+      /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
+      /*const capicua = (numero = 0) => {
+        if (!numero) return console.log("No ingresaste un numero");
+
+        if (typeof numero !== "number")
+          return console.log(`El valor "${numero}" ingresado. No es un numero`);
+
+        numero = numero.toString();
+        let alReves = numero.split("").reverse().join("");
+
+        return numero === alReves
+          ? console.log(
+              `Si es capicua, Numero original ${numero}, Numero al reves ${alReves}`
+            )
+          : console.log(
+              `Si es capicua, Numero original ${numero}, Numero al reves ${alReves}`
+            );
+      };*/
+      //capicua(1221)
+
+      // <-- solucion Henry
+      function capicu(numero) {
+        let strNum = numero.toString();
+        let strCharAux = strNum.split("");
+        let strCharInv = strCharAux.reverse().join("").toString();
+        if (strNum === strCharInv) {
+          return "Es capicua";
+        } else {
+          return "No es capicua";
+        }
+      }
+      //capicu(1221);
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicios de Programación en JavaScript</title>
-</head>
+      /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
 
-<body>
-  <h1>Ejercicios de Programación en JavaScript</h1>
-  <script>
-    /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
+      const factorial = (numero = undefined) =>{
+        if(numero === undefined) return console.warn("No ingresaste el numero");
+        if(typeof numero !== "number") return console.error (`El valor "${numero}" ingresado, No es un numero`);
+
+        if(numero === 0) return console.error("El numero no puede ser 0");
+
+        if(Math.sign(numero) === -1) return console.error ("El numero no puede ser negativo")
+
+        let factorial = 1;
+
+        for(let i = numero; i > 1; i--){
+          factorial *= i;
+        }
+        return console.log(`El factorial de ${numero} es ${factorial}`)
+      }
+
+      //factorial(5)
+
+
+      /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
+      // <-- Solucion Henry
+      function primo(num) {
+       if(num === 2) return false;
+       for (let i =2; i <num; i++){
+         if(num % i === 0) {
+           return false;
+         }
+       }
+       return true;
+      }
+
+      //primo(7)
+
+      //solucion jon
+      const esPrimo = (numero = undefined) => {
+        if(numero === undefined) return console.warn("No ingresaste un numero");
 
+        if(typeof numero !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`);
 
-    /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+        if(numero===0) return console.error("El numero no puede ser 0");
 
+        if(numero===1) return console.error("El numero no puede ser 1");
 
+        if(Math.sign(numero)=== -1) return console.error("El numero no puede ser negativo")
 
-    /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
-     miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
+        let divisible = false;
 
+        for(let i=2; i < numero; i++){
+          if((numero % i)===0) {
+            divisible = true;
+            break;
+          }
+        }
+        return (divisible)
+        ? console.log(`El numero ${numero}, No es primo`)
+        : console.log(`El numero ${numero}, Si es primo`)
+      }
 
+      //esPrimo(7)
 
-    /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
+      /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
+      // <- solucion Henry
+      function esPar(num){
+        if(num % 2 === 0){
+         return console.log("Par");
+        } else { return console.log("Impar")
+        }
+      }
+      //esPar(20)
 
+      // <- solucion Jon
 
+      const numeroParImpar = (numero = undefined) => {
 
-    /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
+        if(numero === undefined) return console.warn("No ingresaste un numero");
 
+        if(typeof numero !== "number") return console.error (`El valor "${numero}" ingresado, No es un numero`);
 
+        return ((numero % 2) === 0)
+        ? consoel.info(`El numero ${numero} es Par`)
+        : console.info(`El numero ${numero} es Impar`)
+      }
 
-    /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
+      //numeroParImpar(7)
 
+      /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
 
+      const convertirGrados = (grados = undefined, unidad = undefined) => {
+        if(grados === undefined) return console.warn("No ingresaste grados a convertir");
 
-    /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+        if(typeof grados !== "number") return console.error (`El valor de "${grados}" ingresado, No es un numero`);
 
+        if(unidad === undefined) return console.warn("No ingresaste el tipo de dato a convertir");
 
+        if(typeof unidad !== "string") return console.error (`El valor de "${unidad}" ingresado, No es una cadena de texto`);
 
-    /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
+        if(unidad.length !== 1 || !/(C|F)/.test(unidad)) return console.warn("valor de unidad invalido")
 
+        if(unidad === "C"){
+          return console.info(`${grados}°C = ${Math.round((grados * (9/5)) + 32 )}°F`);
+        } else if(unidad === "F") {
+          return console.info(`${grados}°F = ${Math.round(((grados-32)*(5/9)))}°C`);
+        } else {
+          return console.error("El tipo de grados a convertir No es valido")
+        }
+      }
+      //convertirGrados(100,"F")
 
+      // <- my solution
+      function grados(grados,unidad){
 
-    /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
+        if(grados === undefined) return console.warn("No ingresaste grados a convertir");
+        if(typeof grados !== "number") return console.error (`El valor de "${grados}" ingresado, No es un numero`);
+        if(unidad === undefined) return console.warn("No ingresaste el tipo de dato a convertir");
+        if(typeof unidad !== "string") return console.error (`El valor de "${unidad}" ingresado, No es una cadena de texto`);
+        if(unidad.length !== 1 || !/(C|F)/.test(unidad)) return console.warn("valor de unidad invalido")
+        if(unidad === "C"){
+          return console.info(`${grados}°C = ${Math.round((grados * (9/5)) + 32 )}°F`);
+        } else if(unidad === "F") {
+          return console.info(`${grados}°F = ${Math.round(((grados-32)*(5/9)))}°C`);
+        } else {
+          return console.error("El tipo de grados a convertir No es valido")
+        }
+      }
 
+      grados(0,"C")
 
 
-    /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
+      /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
 
+      /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
 
+      /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
 
-    /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
+      /* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5 */
 
+      /* 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero */
 
+      /* 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero */
 
-    /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
+      /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25] */
 
+      /* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60] */
 
+      /* 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]} */
 
-    /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
+      /* 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }*/
 
+      /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
 
+      /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5 */
 
-    /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
+      /* 27) Programa una clase llamada Pelicula.
+              La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+                - Todos los datos del objeto son obligatorios.
+                - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 7 restantes números.
+                - Valida que el título no rebase los 100 caracteres.
+                - Valida que el director no rebase los 50 caracteres.
+                - Valida que el año de estreno sea un número entero de 4 dígitos.
+                - Valida que el país o paises sea introducidos en forma de arreglo.
+                - Valida que los géneros sean introducidos en forma de arreglo.
+                - Valida que los géneros introducidos esten dentro de los géneros aceptados*.
+                - Crea un método estático que devuelva los géneros aceptados*.
+                - Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
+                - Crea un método que devuelva toda la ficha técnica de la película.
+                - Apartir de un arreglo con la información de 3 películas genera 3 instancias de la clase de forma automatizada e imprime la ficha técnica de cada película.
 
-
-
-    /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
-
-
-
-    /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
-
-
-
-    /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
-
-
-
-    /* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5 */
-
-
-
-    /* 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero */
-
-
-
-    /* 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero */
-
-
-
-    /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25] */
-
-
-
-    /* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60] */
-
-
-
-    /* 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]} */
-
-
-
-    /* 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }*/
-
-
-
-    /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
-
-
-
-    /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5 */
-
-
-
-    /* 27) Programa una clase llamada Pelicula.
-        La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
-          - Todos los datos del objeto son obligatorios.
-          - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 7 restantes números.
-          - Valida que el título no rebase los 100 caracteres.
-          - Valida que el director no rebase los 50 caracteres.
-          - Valida que el año de estreno sea un número entero de 4 dígitos.
-          - Valida que el país o paises sea introducidos en forma de arreglo.
-          - Valida que los géneros sean introducidos en forma de arreglo.
-          - Valida que los géneros introducidos esten dentro de los géneros aceptados*.
-          - Crea un método estático que devuelva los géneros aceptados*.
-          - Valida que la calificación sea un número entre 0 y 10 pudiendo ser decimal de una posición.
-          - Crea un método que devuelva toda la ficha técnica de la película.
-          - Apartir de un arreglo con la información de 3 películas genera 3 instancias de la clase de forma automatizada e imprime la ficha técnica de cada película.
-
-        * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
-        */
-  </script>
-</body>
-
+              * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+              */
+    </script>
+  </body>
 </html>
