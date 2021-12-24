@@ -198,72 +198,82 @@
 
       /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
 
-      const factorial = (numero = undefined) =>{
-        if(numero === undefined) return console.warn("No ingresaste el numero");
-        if(typeof numero !== "number") return console.error (`El valor "${numero}" ingresado, No es un numero`);
+      const factorial = (numero = undefined) => {
+        if (numero === undefined)
+          return console.warn("No ingresaste el numero");
+        if (typeof numero !== "number")
+          return console.error(
+            `El valor "${numero}" ingresado, No es un numero`
+          );
 
-        if(numero === 0) return console.error("El numero no puede ser 0");
+        if (numero === 0) return console.error("El numero no puede ser 0");
 
-        if(Math.sign(numero) === -1) return console.error ("El numero no puede ser negativo")
+        if (Math.sign(numero) === -1)
+          return console.error("El numero no puede ser negativo");
 
         let factorial = 1;
 
-        for(let i = numero; i > 1; i--){
+        for (let i = numero; i > 1; i--) {
           factorial *= i;
         }
-        return console.log(`El factorial de ${numero} es ${factorial}`)
-      }
+        return console.log(`El factorial de ${numero} es ${factorial}`);
+      };
 
       //factorial(5)
-
 
       /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
       // <-- Solucion Henry
       function primo(num) {
-       if(num === 2) return false;
-       for (let i =2; i <num; i++){
-         if(num % i === 0) {
-           return false;
-         }
-       }
-       return true;
+        if (num === 2) return false;
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) {
+            return false;
+          }
+        }
+        return true;
       }
 
       //primo(7)
 
       //solucion jon
       const esPrimo = (numero = undefined) => {
-        if(numero === undefined) return console.warn("No ingresaste un numero");
+        if (numero === undefined)
+          return console.warn("No ingresaste un numero");
 
-        if(typeof numero !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`);
+        if (typeof numero !== "number")
+          return console.error(
+            `El valor "${numero}" ingresado, No es un numero`
+          );
 
-        if(numero===0) return console.error("El numero no puede ser 0");
+        if (numero === 0) return console.error("El numero no puede ser 0");
 
-        if(numero===1) return console.error("El numero no puede ser 1");
+        if (numero === 1) return console.error("El numero no puede ser 1");
 
-        if(Math.sign(numero)=== -1) return console.error("El numero no puede ser negativo")
+        if (Math.sign(numero) === -1)
+          return console.error("El numero no puede ser negativo");
 
         let divisible = false;
 
-        for(let i=2; i < numero; i++){
-          if((numero % i)===0) {
+        for (let i = 2; i < numero; i++) {
+          if (numero % i === 0) {
             divisible = true;
             break;
           }
         }
-        return (divisible)
-        ? console.log(`El numero ${numero}, No es primo`)
-        : console.log(`El numero ${numero}, Si es primo`)
-      }
+        return divisible
+          ? console.log(`El numero ${numero}, No es primo`)
+          : console.log(`El numero ${numero}, Si es primo`);
+      };
 
       //esPrimo(7)
 
       /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
       // <- solucion Henry
-      function esPar(num){
-        if(num % 2 === 0){
-         return console.log("Par");
-        } else { return console.log("Impar")
+      function esPar(num) {
+        if (num % 2 === 0) {
+          return console.log("Par");
+        } else {
+          return console.log("Impar");
         }
       }
       //esPar(20)
@@ -271,84 +281,737 @@
       // <- solucion Jon
 
       const numeroParImpar = (numero = undefined) => {
+        if (numero === undefined)
+          return console.warn("No ingresaste un numero");
 
-        if(numero === undefined) return console.warn("No ingresaste un numero");
+        if (typeof numero !== "number")
+          return console.error(
+            `El valor "${numero}" ingresado, No es un numero`
+          );
 
-        if(typeof numero !== "number") return console.error (`El valor "${numero}" ingresado, No es un numero`);
-
-        return ((numero % 2) === 0)
-        ? consoel.info(`El numero ${numero} es Par`)
-        : console.info(`El numero ${numero} es Impar`)
-      }
+        return numero % 2 === 0
+          ? consoel.info(`El numero ${numero} es Par`)
+          : console.info(`El numero ${numero} es Impar`);
+      };
 
       //numeroParImpar(7)
 
       /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
 
       const convertirGrados = (grados = undefined, unidad = undefined) => {
-        if(grados === undefined) return console.warn("No ingresaste grados a convertir");
+        if (grados === undefined)
+          return console.warn("No ingresaste grados a convertir");
 
-        if(typeof grados !== "number") return console.error (`El valor de "${grados}" ingresado, No es un numero`);
+        if (typeof grados !== "number")
+          return console.error(
+            `El valor de "${grados}" ingresado, No es un numero`
+          );
 
-        if(unidad === undefined) return console.warn("No ingresaste el tipo de dato a convertir");
+        if (unidad === undefined)
+          return console.warn("No ingresaste el tipo de dato a convertir");
 
-        if(typeof unidad !== "string") return console.error (`El valor de "${unidad}" ingresado, No es una cadena de texto`);
+        if (typeof unidad !== "string")
+          return console.error(
+            `El valor de "${unidad}" ingresado, No es una cadena de texto`
+          );
 
-        if(unidad.length !== 1 || !/(C|F)/.test(unidad)) return console.warn("valor de unidad invalido")
+        if (unidad.length !== 1 || !/(C|F)/.test(unidad))
+          return console.warn("valor de unidad invalido");
 
-        if(unidad === "C"){
-          return console.info(`${grados}°C = ${Math.round((grados * (9/5)) + 32 )}°F`);
-        } else if(unidad === "F") {
-          return console.info(`${grados}°F = ${Math.round(((grados-32)*(5/9)))}°C`);
+        if (unidad === "C") {
+          return console.info(
+            `${grados}°C = ${Math.round(grados * (9 / 5) + 32)}°F`
+          );
+        } else if (unidad === "F") {
+          return console.info(
+            `${grados}°F = ${Math.round((grados - 32) * (5 / 9))}°C`
+          );
         } else {
-          return console.error("El tipo de grados a convertir No es valido")
+          return console.error("El tipo de grados a convertir No es valido");
         }
-      }
+      };
       //convertirGrados(100,"F")
 
       // <- my solution
-      function grados(grados,unidad){
-
-        if(grados === undefined) return console.warn("No ingresaste grados a convertir");
-        if(typeof grados !== "number") return console.error (`El valor de "${grados}" ingresado, No es un numero`);
-        if(unidad === undefined) return console.warn("No ingresaste el tipo de dato a convertir");
-        if(typeof unidad !== "string") return console.error (`El valor de "${unidad}" ingresado, No es una cadena de texto`);
-        if(unidad.length !== 1 || !/(C|F)/.test(unidad)) return console.warn("valor de unidad invalido")
-        if(unidad === "C"){
-          return console.info(`${grados}°C = ${Math.round((grados * (9/5)) + 32 )}°F`);
-        } else if(unidad === "F") {
-          return console.info(`${grados}°F = ${Math.round(((grados-32)*(5/9)))}°C`);
+      function grados(grados, unidad) {
+        if (grados === undefined)
+          return console.warn("No ingresaste grados a convertir");
+        if (typeof grados !== "number")
+          return console.error(
+            `El valor de "${grados}" ingresado, No es un numero`
+          );
+        if (unidad === undefined)
+          return console.warn("No ingresaste el tipo de dato a convertir");
+        if (typeof unidad !== "string")
+          return console.error(
+            `El valor de "${unidad}" ingresado, No es una cadena de texto`
+          );
+        if (unidad.length !== 1 || !/(C|F)/.test(unidad))
+          return console.warn("valor de unidad invalido");
+        if (unidad === "C") {
+          return console.info(
+            `${grados}°C = ${Math.round(grados * (9 / 5) + 32)}°F`
+          );
+        } else if (unidad === "F") {
+          return console.info(
+            `${grados}°F = ${Math.round((grados - 32) * (5 / 9))}°C`
+          );
         } else {
-          return console.error("El tipo de grados a convertir No es valido")
+          return console.error("El tipo de grados a convertir No es valido");
         }
       }
 
-      grados(0,"C")
-
+      //grados(0,"C")
 
       /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
 
+      // <- solucion Jon
+      const convertirBinarioDecimal = (
+        numero = undefined,
+        base = undefined
+      ) => {
+        if (!numero === undefined)
+          return console.warn("No ingresaste el numero a convertir");
+
+        if (typeof numero !== "number")
+          return console.error(
+            `El valor "${numero}" ingresado, NO es un numero`
+          );
+
+        if (base === undefined)
+          return console.warn("No ingresaste la base a convertir");
+
+        if (typeof base !== "number")
+          return console.error(`El valor "${base}" ingresado, NO es un numero`);
+
+        if (base === 2) {
+          return console.info(
+            `${numero} base ${base} = ${parseInt(numero, base)} base10`
+          );
+        } else if (base === 10) {
+          return console.info(
+            `${numero} base ${base} = ${numero.toString(2)} base2`
+          );
+        } else {
+          return console.error("El tipo de base a convertir No es valido");
+        }
+      };
+
+      //convertirBinarioDecimal(4, 10);
+
+      // <- My solution
+      function binarioDecimal(numero = undefined, base = undefined) {
+        if (!numero === undefined)
+          return console.warn("No ingresaste el numero a convertir");
+
+        if (typeof numero !== "number")
+          return console.error(
+            `El valor "${numero}" ingresado, NO es un numero`
+          );
+
+        if (base === undefined)
+          return console.warn("No ingresaste la base a convertir");
+
+        if (typeof base !== "number")
+          return console.error(`El valor "${base}" ingresado, NO es un numero`);
+
+        if (base === 2) {
+          return console.info(
+            `${numero} base ${base} = ${parseInt(numero, base)} base10`
+          );
+        } else if (base === 10) {
+          return console.info(
+            `${numero} base ${base} = ${numero.toString(2)} base2`
+          );
+        } else {
+          return console.error("El tipo de base a convertir No es valido");
+        }
+      }
+
+      // binarioDecimal(100,2)
+
       /* 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800 */
 
-      /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
+      // <- solucion Jon
+      const aplicarDescuento = (monto = undefined, descuento = 0) => {
+        if (!monto) return console.warn("no ingresaste el monto");
 
+        if (typeof monto !== "number")
+          return console.error(
+            `El valor "${monto}" ingresado, NO es un numero`
+          );
+
+        if (monto === 0) return "el monto no puede ser 0";
+
+        if (Math.sign(monto) === -1)
+          return console.error("El descuento no puede ser negativo");
+
+        return console.info(
+          `$${monto} - ${descuento}% = $${monto - (monto * descuento) / 100} `
+        );
+      };
+
+      //aplicarDescuento(1000, 25);
+
+      // <- My solution
+      function descuentoVenta(monto = undefined, descuento = 0) {
+        if (!monto) return console.warn("no ingresaste el monto");
+
+        if (typeof monto !== "number")
+          return console.error(
+            `El valor "${monto}" ingresado, NO es un numero`
+          );
+
+        if (monto === 0) return "el monto no puede ser 0";
+
+        if (Math.sign(monto) === -1)
+          return console.error("El descuento no puede ser negativo");
+
+        return console.info(
+          `$${monto} - ${descuento}% = $${monto - (monto * descuento) / 100} `
+        );
+      }
+
+      //descuentoVenta(1000,25)
+
+      /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
+      // <- solucion Jon
+      const calcularAnios = (fecha = undefined) => {
+        if (fecha === undefined) return console.warn("No ingresaste la fecha");
+
+        if (!(fecha instanceof Date))
+          return console.error(
+            "El valor que ingresaste no es una fecha valida"
+          );
+
+        let hoyMenosFecha = new Date().getTime() - fecha.getTime();
+
+        aniosEnMs = 1000 * 60 * 60 * 24 * 365; // <- milisegundos transcurridos en un año
+
+        aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMs);
+
+        return Math.sign(aniosHumanos) === -1
+          ? console.info(
+              `Faltan ${Math.abs(
+                aniosHumanos
+              )} años para el ${fecha.getFullYear()}.`
+            )
+          : Math.sign(aniosHumanos) === 1
+          ? console.info(
+              `Han pasado ${aniosHumanos} años desde ${fecha.getFullYear()}.`
+            )
+          : console.info(`Estamos en el año actual ${fecha.getFullYear()}.`);
+      };
+
+      //calcularAnios(new Date(1985,8,2));
+
+      // <- My solution
+      function anios(fecha) {
+        if (fecha === undefined) return console.warn("No ingresaste la fecha");
+
+        if (!(fecha instanceof Date))
+          return console.error(
+            "El valor que ingresaste no es una fecha valida"
+          );
+
+        let hoyMenosFecha = new Date().getTime() - fecha.getTime();
+
+        aniosEnMs = 1000 * 60 * 60 * 24 * 365; // <- milisegundos transcurridos en un año
+
+        aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMs);
+
+        return Math.sign(aniosHumanos) === -1
+          ? console.info(
+              `Faltan ${Math.abs(
+                aniosHumanos
+              )} años para el ${fecha.getFullYear()}.`
+            )
+          : Math.sign(aniosHumanos) === 1
+          ? console.info(
+              `Han pasado ${aniosHumanos} años desde ${fecha.getFullYear()}.`
+            )
+          : console.info(`Estamos en el año actual ${fecha.getFullYear()}.`);
+      }
+
+      // anios(new Date(1985, 8, 2));
       /* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5 */
+
+      // <- Solucion Jon
+      const contarLetras = (cadena = "") => {
+        if (!cadena) return console.warn("No ingresaste una cadena de texto");
+
+        if (typeof cadena !== "string")
+          return console.error(
+            `El valor de "${cadena}" ingresada, NO es una cadena de texto`
+          );
+
+        let vocales = 0, // <-- Aqui vamos guardando las vocales
+          consonantes = 0; // <-- Aqui vamos guardando las consonantes
+
+        cadena = cadena.toLocaleLowerCase();
+
+        for (let letra of cadena) {
+          // <- recorremos el string
+          if (/[aeiouáéíóúü]/.test(letra)) vocales++;
+
+          if (/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++;
+        }
+        return console.info({
+          cadena,
+          vocales,
+          consonantes,
+        });
+      };
+
+      //contarLetras("hola mundo")
+
+      // <- My solution
+      function letras(cadena = "") {
+        if (!cadena) return console.warn("No ingresaste una cadena de texto"); // <- esto se traduce : si no ingresa cadena de texto lanza mensaje de error
+
+        if (typeof cadena !== "string")
+          return console.error(
+            `El valor de "${cadena}" ingresada, NO es una cadena de texto`
+          );
+
+        let vocales = 0, // <-- Aqui vamos guardando las vocales
+          consonantes = 0; // <-- Aqui vamos guardando las consonantes
+
+        cadena = cadena.toLocaleLowerCase();
+
+        for (let letra of cadena) {
+          // <- recorremos el string
+          if (/[aeiouáéíóúü]/.test(letra)) vocales++;
+
+          if (/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++;
+        }
+        return console.info({
+          cadena,
+          vocales,
+          consonantes,
+        });
+      }
+
+      //letras("hola mundo")
 
       /* 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero */
 
+      //solucion Jon
+      const validarNombre = (nombre = "") => {
+        if (!nombre) return console.warn("No ingresaste un nombre");
+
+        if (typeof nombre !== "string")
+          return console.error(
+            `El valor "${nombre} ingresado no es una cadena de texto"`
+          );
+
+        let expReg = /^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(nombre);
+
+        return expReg
+          ? console.info(`"${nombre}", es un nombre valido`)
+          : console.warn(`"${nombre}", NO es un nombre valido`);
+      };
+
+      //validarNombre("Gualberto Montiel");
+
+      //solucion Jon
+      function validar(nombre = "") {
+        if (!nombre) return console.warn("No ingresaste un nombre");
+
+        if (typeof nombre !== "string")
+          return console.error(
+            `El valor "${nombre} ingresado no es una cadena de texto"`
+          );
+
+        let expReg = /^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(nombre);
+
+        return expReg
+          ? console.info(`"${nombre}", es un nombre valido`)
+          : console.warn(`"${nombre}", NO es un nombre valido`);
+      }
+
+      //validar("Gualberto Montiel");
+
       /* 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero */
+
+      //solucion Jon
+      const validarEmail = (email = "") => {
+        if (!email) return console.warn("No ingresaste un email");
+
+        if (typeof email !== "string")
+          return console.error(
+            `El valor "${email} ingresado no es una cadena de texto"`
+          );
+
+        let expReg =
+          /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+            email
+          );
+
+        return expReg
+          ? console.info(`"${email}", es un email valido`)
+          : console.warn(`"${email}", NO es un email valido`);
+      };
+
+      //validarEmail("gumodi10@gmail.com");
+
+      //My solution
+      function emaiL(email = "") {
+        if (!email) return console.warn("No ingresaste un email");
+
+        if (typeof email !== "string")
+          return console.error(
+            `El valor "${email} ingresado no es una cadena de texto"`
+          );
+
+        let expReg =
+          /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+            email
+          );
+
+        return expReg
+          ? console.info(`"${email}", es un email valido`)
+          : console.warn(`"${email}", NO es un email valido`);
+      }
+
+      //emaiL("gumodi10@gmail.com");
 
       /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25] */
 
+      // solucion Jon
+      const devolverCuadrados = (arr = undefinded) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+
+        // <- recorro el array  y elevo al cuadradro cada numero y devuelvo un nuevo array
+        const newArr = arr.map((el) => el * el);
+
+        return console.info(
+          `Arreglo original: ${arr},\nArreglo elevado al cuadrado: ${newArr}`
+        );
+      };
+
+      //devolverCuadrados([1,4,5])
+
+      // My solution
+      function cuadrados(arr = undefinded) {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+
+        // <- recorro el array  y elevo al cuadradro cada numero y devuelvo un nuevo array
+        const newArr = arr.map((el) => el * el);
+
+        return console.info(
+          `Arreglo original: ${arr},\nArreglo elevado al cuadrado: ${newArr}`
+        );
+      }
+
+      //cuadrados([1,4,5])
       /* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60] */
+      // solucion Jon
+      const arrayMinMax = (arr = undefinded) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+
+        return console.info(
+          `Arreglo original: ${arr},\nValor mayor: ${Math.max(
+            ...arr
+          )},\nValor menor: ${Math.min(...arr)}`
+        );
+      };
+
+      //arrayMinMax([1, 4, 5, 99, -60]);
+
+      // My solution
+      // solucion Jon
+      function minMax(arr = undefinded) {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+
+        return console.info(
+          `Arreglo original: ${arr},\nValor mayor: ${Math.max(
+            ...arr
+          )},\nValor menor: ${Math.min(...arr)}`
+        );
+      }
+
+      //minMax([1, 4, 5, 99, -60]);
 
       /* 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]} */
 
+      //solucion Jon
+      const separarParesImpares = (arr = undefinded) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+
+        return console.info({
+          pares: arr.filter((num) => num % 2 === 0),
+          impares: arr.filter((num) => num % 2 === 1),
+        });
+      };
+
+      //separarParesImpares([1,2,3,4,5,6,7,8,9,0]);
+
+      //My solution
+      function paresImpares(arr = undefinded) {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+
+        return console.info({
+          pares: arr.filter((num) => num % 2 === 0),
+          impares: arr.filter((num) => num % 2 === 1),
+        });
+      }
+
+      // paresImpares([1,2,3,4,5,6,7,8,9,0]);
+
       /* 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }*/
+
+      // solucion Jon
+      const ordenarArreglo = (arr = undefinde) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+        return console.info({
+          arr,
+          asc: arr.map((el) => el).sort(),
+          desc: arr
+            .map((el) => el)
+            .sort()
+            .reverse(),
+        });
+      };
+
+      //ordenarArreglo([5,6,7,7,8])
+
+      //My solution
+      function arreglo(arr = undefinde) {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num} ingresado, NO es un numero"`
+            );
+        }
+        return console.info({
+          arr,
+          asc: arr.map((el) => el).sort(),
+          desc: arr
+            .map((el) => el)
+            .sort()
+            .reverse(),
+        });
+      }
+
+      //arreglo([5,6,7,7,8])
 
       /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
 
+      //solucion Jon
+      const quitarDuplicados = (arr = undefinde) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        if (arr.length === 1)
+          return console.error("El arreglo debe tener al menos 2 elementos");
+
+        return console.info({
+          original: arr,
+          sinDuplicados: arr.filter(
+            (value, index, self) => self.indexOf(value) === index
+          ),
+        });
+      };
+
+      //quitarDuplicados(["x", 10, "x", 2, "10", 10, true, true])
+
+      //My solution
+      function duplicados(arr = undefinde) {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        if (arr.length === 1)
+          return console.error("El arreglo debe tener al menos 2 elementos");
+
+        /*return console.info({
+          original: arr,
+          sinDuplicados: arr.filter(
+            (value, index, self) => self.indexOf(value) === index
+          ),
+        });*/
+
+        //usando set (set regresa un arreglo sin elementos duplicados)
+        return console.info({
+          original: arr,
+          sinDuplicados: [...new Set(arr)],
+        });
+      }
+
+      // duplicados(["x", 10, "x", 2, "10", 10, true, true])
+
       /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5 */
+
+      //solucion Jon
+      const promedio = (arr = undefinde) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, NO es un numero`
+            );
+        }
+
+        return console.info(
+          arr.reduce((total, num, index, arr) => {
+            total += num;
+            if (index === arr.length - 1) {
+              return `El promedio de ${arr} es ${total / arr.length}`;
+            } else {
+              return total;
+            }
+          })
+        );
+      };
+
+      //promedio([9,8,7,6,5,4,3,2,1,0])
+
+      //My solution
+      function prom(arr = undefinde) {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+
+        if (!(arr instanceof Array))
+          return console.error("El valor que ingresaste no es un arreglo");
+
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, NO es un numero`
+            );
+        }
+
+        return console.info(
+          arr.reduce((total, num, index, arr) => {
+            total += num;
+            if (index === arr.length - 1) {
+              return `El promedio de ${arr} es ${total / arr.length}`;
+            } else {
+              return total;
+            }
+          })
+        );
+      }
+
+      // prom([9,8,7,6,5,4,3,2,1,0]);
 
       /* 27) Programa una clase llamada Pelicula.
               La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
@@ -367,6 +1030,193 @@
 
               * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
               */
+
+      class Pelicula {
+        constructor({
+          id,
+          titulo,
+          director,
+          estreno,
+          pais,
+          generos,
+          calificacion,
+        }) {
+          this.id = id;
+          this.titulo = titulo;
+          this.director = director;
+          this.estreno = estreno;
+          this.pais = pais;
+          this.generos = generos;
+          this.calificacion = calificacion;
+
+          this.validarIMDB(id);
+          this.validarTitulo(titulo);
+          this.validarDirector(director);
+          this.validarEstreno(estreno);
+          this.validarPais(pais);
+          this.validarGeneros(generos);
+          this.validarCalificacion(calificacion);
+        }
+
+        static get listaGeneros(){
+          return [ "Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War, Western"];
+        }
+
+        static generosAceptados(){
+          return console.info(`Los generos aceptados son: ${Pelicula.listaGeneros.join(",")}`);
+        }
+
+        validarCadena(propiedad, valor) {
+          if (!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+
+          if (typeof valor !== "string")
+            return console.error(
+              `${propiedad} "${valor}" ingresado, NO es cadena de texto`
+            );
+
+          return true;
+        }
+
+        validarLongitudCadena(propiedad, valor, longitud) {
+          if (valor.length > longitud)
+            return console.error(`${propiedad} "${valor}" excede el numero de 
+            caracteres permitidos (${longitud}).`);
+
+          return true;
+        }
+
+        validarNumero(propiedad, valor) {
+          if (!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+
+          if (typeof valor !== "number")
+            return console.error(
+              `${propiedad} "${valor}" ingresado, NO es un numero`
+            );
+
+          return true;
+        }
+
+        validarArreglo(propiedad, valor) {
+          if (!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+
+          if (!(valor instanceof Array))
+            return console.error(
+              `${propiedad} "${valor}" ingresado, NO es un arreglo`
+            );
+
+          if (valor.length === 0)
+            return console.error(`${propiedad} "${valor}" no tiene datos`);
+
+          for (let cadena of valor) {
+            if (typeof cadena !== "string")
+              return console.error(
+                `El valor "${cadena}" ingresado, NO es una cadena de texto`
+              );
+          }
+
+          return true;
+        }
+
+        validarIMDB(id) {
+          if (this.validarCadena("IMDB id", id))
+            if (!/^([a-z]){2}([0-9]){7}$/.test(id))
+              return console.error(
+                `IMDB id "${id}" no es valido, debe tener 9 caracteres, los 2 primeros letras minusculas, los 7 restantes numeros`
+              );
+        }
+
+        validarTitulo(titulo) {
+          if (this.validarCadena("Titulo", titulo))
+            this.validarLongitudCadena("Titulo", titulo, 100);
+        }
+
+        validarDirector(director) {
+          if (this.validarCadena("Director", director))
+            this.validarLongitudCadena("Director", director, 100);
+        }
+
+        validarEstreno(estreno) {
+          if (this.validarNumero("Año de Estreno ", estreno))
+            if (!/^([0-9]){4}$/.test(estreno))
+              return console.error(
+                `Año de "${estreno}" no es valido, debe ser un numero de 4 digitos`
+              );
+        }
+
+        validarPais(pais) {
+          this.validarArreglo("Pais", pais);
+        }
+
+        validarGeneros(generos) {
+         if(this.validarArreglo("Generos",generos)){
+           for(let genero of generos){
+             //console.log(genero, Pelicula.listaGeneros.includes(genero));
+               if(!Pelicula.listaGeneros.includes(genero)){
+                console.error(`Genero(s) incorrectos "${generos.join(",")}"`);
+                Pelicula.generosAceptados();
+               }
+           }
+         }
+        }
+
+        validarCalificacion(calificacion) {
+          if (this.validarNumero("Calificacion", calificacion))
+            return (calificacion < 0 || calificacion > 10)
+            ? console.error(`La califiacion tiene que estar entre 0 y 10 `)
+            : this.califiacion = calificacion.toFixed(1);
+        }
+
+        fichaTecnica(){
+          console.info(`Ficha Tecnica:\nTitulo:"${this.titulo}"\nDirector:"${this.director}"\Año:"${this.estreno}"\nPais:"${this.pais.join("-")}"\nGeneros:"${this.generos.join(",")}"\nCalificacion:"${this.calificacion}"\nIMDB id:"${this.id}"`)
+        }
+      }
+
+      //Pelicula.generosAceptados();
+      /*const peli = new Pelicula({
+        id: "tt1234567",
+        titulo: "Titulo de la Peli",
+        director: "Director de la Peli",
+        estreno: 2020,
+        pais: ["Mexico"],
+        generos:["Comedy","Musical"],
+        calificacion: 8.2
+      });
+
+      peli.fichaTecnica();*/
+
+      const misPelis =[
+      {
+        id: "tt1234125",
+        titulo: "Rocky",
+        director: "Rocky",
+        estreno: 2020,
+        pais: ["Mexico"],
+        generos:["Humor",],
+        calificacion: 8.2
+      },
+      {
+        id: "tt1234236",
+        titulo: "La mascara",
+        director: "La mascara",
+        estreno: 2004,
+        pais: ["Mexico","Francia"],
+        generos:["Comedy","Musical"],
+        calificacion: 9.2
+      },
+      {
+        id: "tt1234786",
+        titulo: "Matrix 4",
+        director: "wachosky",
+        estreno: 2021,
+        pais: ["Estados Unidos"],
+        generos:["Comedy",],
+        calificacion: 7.2
+      }      
+      ];
+
+      misPelis.forEach(el => new Pelicula(el).fichaTecnica());
+
+
     </script>
   </body>
 </html>
